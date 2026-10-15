@@ -41,7 +41,7 @@ export default function ContactPage({ contactRequest, onNavigate, onGoHome, onCo
             className="flex items-center gap-2 text-stone hover:text-gold transition-colors text-xs tracking-[0.2em] uppercase font-medium mb-8"
           >
             <ArrowLeft size={14} />
-            Back to Home
+            Back to Home!
           </motion.button>
 
           <motion.div
