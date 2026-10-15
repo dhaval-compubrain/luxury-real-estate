@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #171916;
+  --color-charcoal-light: #1e211d;
+  --color-forest: #183D32;
+  --color-forest-light: #1f5244;
+  --color-ivory: #F6F2E9;
+  --color-ivory-dark: #ece6d6;
+  --color-gold: #C5A46D;
+  --color-gold-light: #d4b87f;
+  --color-gold-dark: #b08f5a;
+  --color-stone: #A9AAA3;
+  --color-stone-light: #c4c5bf;
+  --color-stone-dark: #8a8b85;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-ivory);
+  overflow-x: hidden;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 3px;
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Text shadow for hero */
+.text-shadow-hero {
+  text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+}
+
+/* Gold text glow */
+.text-gold-glow {
+  text-shadow: 0 0 40px rgba(197,164,109,0.3);
+}
+
+/* Smooth image reveal */
+.img-reveal {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Button shine effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+.btn-shine:hover::before {
+  left: 100%;
+}
+
+/* Parallax container */
+.parallax-container {
+  overflow: hidden;
+}
+.parallax-image {
+  transform: scale(1.15);
+  transition: transform 0.1s linear;
+}
+
+/* Gold border animation */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(197,164,109,0.3); }
+  50% { border-color: rgba(197,164,109,0.7); }
+}
+
+.border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Custom focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Image loading placeholder */
+.img-placeholder {
+  background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-charcoal-light) 100%);
+}
